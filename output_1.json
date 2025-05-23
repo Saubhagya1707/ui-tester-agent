@@ -1,0 +1,336 @@
+[
+    {
+        "model_response": {
+            "candidates": [
+                {
+                    "content": {
+                        "parts": [
+                            {
+                                "function_call": {
+                                    "args": {
+                                        "url": "https://webwatch.carvia-test.org/login?redirectURL=%252Fdashboard"
+                                    },
+                                    "name": "playwright_navigate"
+                                }
+                            }
+                        ],
+                        "role": "model"
+                    },
+                    "finish_reason": "STOP",
+                    "avg_logprobs": -1.498781299839417e-05
+                }
+            ],
+            "model_version": "gemini-2.0-flash",
+            "usage_metadata": {
+                "candidates_token_count": 27,
+                "candidates_tokens_details": [
+                    {
+                        "modality": "TEXT",
+                        "token_count": 27
+                    }
+                ],
+                "prompt_token_count": 1420,
+                "prompt_tokens_details": [
+                    {
+                        "modality": "TEXT",
+                        "token_count": 1420
+                    }
+                ],
+                "total_token_count": 1447
+            },
+            "automatic_function_calling_history": []
+        }
+    },
+    {
+        "tool_name": "playwright_navigate",
+        "args": {
+            "url": "https://webwatch.carvia-test.org/login?redirectURL=%252Fdashboard"
+        },
+        "result": "meta=None content=[TextContent(type='text', text='Navigated to https://webwatch.carvia-test.org/login?redirectURL=%252Fdashboard', annotations=None)] isError=False"
+    },
+    {
+        "model_response": {
+            "candidates": [
+                {
+                    "content": {
+                        "parts": [
+                            {
+                                "function_call": {
+                                    "args": {
+                                        "selector": "text=Login with Keycloak"
+                                    },
+                                    "name": "playwright_click"
+                                }
+                            }
+                        ],
+                        "role": "model"
+                    },
+                    "finish_reason": "STOP",
+                    "avg_logprobs": -0.04911780899221247
+                }
+            ],
+            "model_version": "gemini-2.0-flash",
+            "usage_metadata": {
+                "candidates_token_count": 11,
+                "candidates_tokens_details": [
+                    {
+                        "modality": "TEXT",
+                        "token_count": 11
+                    }
+                ],
+                "prompt_token_count": 1513,
+                "prompt_tokens_details": [
+                    {
+                        "modality": "TEXT",
+                        "token_count": 1513
+                    }
+                ],
+                "total_token_count": 1524
+            },
+            "automatic_function_calling_history": []
+        }
+    },
+    {
+        "tool_name": "playwright_click",
+        "args": {
+            "selector": "text=Login with Keycloak"
+        },
+        "result": "meta=None content=[TextContent(type='text', text='Clicked element: text=Login with Keycloak', annotations=None)] isError=False"
+    },
+    {
+        "model_response": {
+            "candidates": [
+                {
+                    "content": {
+                        "parts": [
+                            {
+                                "function_call": {
+                                    "args": {
+                                        "value": "Saubhagya.carvia",
+                                        "selector": "id=username"
+                                    },
+                                    "name": "playwright_fill"
+                                }
+                            }
+                        ],
+                        "role": "model"
+                    },
+                    "finish_reason": "STOP",
+                    "avg_logprobs": -0.008986585773527622
+                }
+            ],
+            "model_version": "gemini-2.0-flash",
+            "usage_metadata": {
+                "candidates_token_count": 16,
+                "candidates_tokens_details": [
+                    {
+                        "modality": "TEXT",
+                        "token_count": 16
+                    }
+                ],
+                "prompt_token_count": 1573,
+                "prompt_tokens_details": [
+                    {
+                        "modality": "TEXT",
+                        "token_count": 1573
+                    }
+                ],
+                "total_token_count": 1589
+            },
+            "automatic_function_calling_history": []
+        }
+    },
+    {
+        "tool_name": "playwright_fill",
+        "args": {
+            "value": "Saubhagya.carvia",
+            "selector": "id=username"
+        },
+        "result": "meta=None content=[TextContent(type='text', text='Filled id=username with: Saubhagya.carvia', annotations=None)] isError=False"
+    },
+    {
+        "model_response": {
+            "candidates": [
+                {
+                    "content": {
+                        "parts": [
+                            {
+                                "function_call": {
+                                    "args": {
+                                        "value": "password",
+                                        "selector": "id=password"
+                                    },
+                                    "name": "playwright_fill"
+                                }
+                            }
+                        ],
+                        "role": "model"
+                    },
+                    "finish_reason": "STOP",
+                    "avg_logprobs": -0.0010175278410315513
+                }
+            ],
+            "model_version": "gemini-2.0-flash",
+            "usage_metadata": {
+                "candidates_token_count": 10,
+                "candidates_tokens_details": [
+                    {
+                        "modality": "TEXT",
+                        "token_count": 10
+                    }
+                ],
+                "prompt_token_count": 1646,
+                "prompt_tokens_details": [
+                    {
+                        "modality": "TEXT",
+                        "token_count": 1646
+                    }
+                ],
+                "total_token_count": 1656
+            },
+            "automatic_function_calling_history": []
+        }
+    },
+    {
+        "tool_name": "playwright_fill",
+        "args": {
+            "value": "password",
+            "selector": "id=password"
+        },
+        "result": "meta=None content=[TextContent(type='text', text='Filled id=password with: password', annotations=None)] isError=False"
+    },
+    {
+        "model_response": {
+            "candidates": [
+                {
+                    "content": {
+                        "parts": [
+                            {
+                                "function_call": {
+                                    "args": {
+                                        "selector": "id=kc-login"
+                                    },
+                                    "name": "playwright_click"
+                                }
+                            }
+                        ],
+                        "role": "model"
+                    },
+                    "finish_reason": "STOP",
+                    "avg_logprobs": -0.013641613721847533
+                }
+            ],
+            "model_version": "gemini-2.0-flash",
+            "usage_metadata": {
+                "candidates_token_count": 10,
+                "candidates_tokens_details": [
+                    {
+                        "modality": "TEXT",
+                        "token_count": 10
+                    }
+                ],
+                "prompt_token_count": 1707,
+                "prompt_tokens_details": [
+                    {
+                        "modality": "TEXT",
+                        "token_count": 1707
+                    }
+                ],
+                "total_token_count": 1717
+            },
+            "automatic_function_calling_history": []
+        }
+    },
+    {
+        "tool_name": "playwright_click",
+        "args": {
+            "selector": "id=kc-login"
+        },
+        "result": "meta=None content=[TextContent(type='text', text='Clicked element: id=kc-login', annotations=None)] isError=False"
+    },
+    {
+        "model_response": {
+            "candidates": [
+                {
+                    "content": {
+                        "parts": [
+                            {
+                                "function_call": {
+                                    "args": {},
+                                    "name": "playwright_get_visible_text"
+                                }
+                            }
+                        ],
+                        "role": "model"
+                    },
+                    "finish_reason": "STOP",
+                    "avg_logprobs": -0.0021494384855031967
+                }
+            ],
+            "model_version": "gemini-2.0-flash",
+            "usage_metadata": {
+                "candidates_token_count": 8,
+                "candidates_tokens_details": [
+                    {
+                        "modality": "TEXT",
+                        "token_count": 8
+                    }
+                ],
+                "prompt_token_count": 1765,
+                "prompt_tokens_details": [
+                    {
+                        "modality": "TEXT",
+                        "token_count": 1765
+                    }
+                ],
+                "total_token_count": 1773
+            },
+            "automatic_function_calling_history": []
+        }
+    },
+    {
+        "tool_name": "playwright_get_visible_text",
+        "args": {},
+        "result": "meta=None content=[TextContent(type='text', text='Visible text content:\\nWebWatch\\nS\\nSaubhagya\\nHome\\nDashboard\\nDashboard\\nProjects\\nSettings\\nDashboard\\nMonitor Status\\nDOWN\\n0\\nUP\\n0\\nPAUSED\\n0\\nOngoing Incidences\\nView all\\nNo Active Incident\\nEverything seems to be working fine\\nOngoing Incidents', annotations=None)] isError=False"
+    },
+    {
+        "model_response": {
+            "candidates": [
+                {
+                    "content": {
+                        "parts": [
+                            {
+                                "text": "Analysis Done\n"
+                            }
+                        ],
+                        "role": "model"
+                    },
+                    "finish_reason": "STOP",
+                    "avg_logprobs": -0.004069274912277858
+                }
+            ],
+            "model_version": "gemini-2.0-flash",
+            "usage_metadata": {
+                "candidates_token_count": 3,
+                "candidates_tokens_details": [
+                    {
+                        "modality": "TEXT",
+                        "token_count": 3
+                    }
+                ],
+                "prompt_token_count": 1893,
+                "prompt_tokens_details": [
+                    {
+                        "modality": "TEXT",
+                        "token_count": 1893
+                    }
+                ],
+                "total_token_count": 1896
+            },
+            "automatic_function_calling_history": []
+        }
+    },
+    {
+        "model_response": "Analysis Done\n"
+    }
+]
