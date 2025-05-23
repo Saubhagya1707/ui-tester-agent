@@ -51,6 +51,18 @@ The server will be available at [http://localhost:8000](http://localhost:8000).
 └── requirements.txt
 ```
 
+## Sample request
+
+```curl
+curl --location --request GET 'http://localhost:8000/test' \
+--header 'Content-Type: application/json' \
+--data '{
+    "prompt": "Navigate to website http://eaapp.somee.com and click the login link. In the login page, enter
+    the username and password as "admin" and "password" respectively and perform login. Then click the Employee List page and click "Create New" button and enter realistic employee details to create for Name, Salary, Duration Worked,Select dropdown for Grade as
+    CLevel and Email."
+}'
+```
+
 ## License
 
 This project is licensed under the MIT License.
