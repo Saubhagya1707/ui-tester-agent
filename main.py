@@ -50,6 +50,8 @@ async def run(prompt: str):
         Ensure you follow below steps to complete the given task.
         - Go through the task given and identify the tool calls that are required.
         - when calling a tool, return the details i.e. what are you doing
+        - If a complexity comes up on the UI and you don't see a tool result 1 time, then try to get the html of the page, 
+            analyze it and then call required tool based on your analysis again.
         IMPORTANT: If a tool call fails for two consecutive times, then return \"Analysis Done\" with your finding.
         task: {prompt}
     """
@@ -61,8 +63,7 @@ async def run(prompt: str):
                 yield f"data: Session initialized.\n\n"
 
                 mcp_tools = await session.list_tools()
-                print(f"Available tools: {[tool.name for tool in mcp_tools.tools]}")
-
+                # print(f"Available tools: {[tool.name for tool in mcp_tools.tools]}")
 
                 tools = [
                     types.Tool(
@@ -76,10 +77,12 @@ async def run(prompt: str):
                     )
                     for tool in mcp_tools.tools
                 ]
-                print(f"Prepared tool schemas: {tools}")
+                # print(f"Prepared tool schemas: {tools}")
 
                 context = []
                 final_context = []
+                tokens = 0
+                output_tokens = 0
 
                 while True:
                     print("Sending prompt to Gemini model...")
@@ -93,10 +96,6 @@ async def run(prompt: str):
                             ),
                         )
                         print(f"Model response: {response}")
-                        final_context.append({
-                            "model_response": response.to_json_dict(),
-                        })
-
                         # Handle empty candidates case
                         if not response.candidates:
                             print("No candidates in response, retrying...")
@@ -104,15 +103,16 @@ async def run(prompt: str):
                             continue
 
                         part = response.candidates[0].content.parts[0]
+                        input_tokens = response.usage_metadata.prompt_token_count
+                        output_token = response.usage_metadata.candidates_token_count 
+                        tokens += input_tokens
+                        output_tokens += output_token
                         if part and  part.text:
                             if "Analysis Done" in part.text:
-                                print("Received 'Done' signal. Exiting loop.")
+                                print(f"Received 'Done' signal. Exiting loop. tokens: input: {tokens}, output: {output_tokens}")
                                 yield f"data: {part.text} Returning the report now..\n\n"
                                 with open("output_1.json", "w") as f:
                                     context.append("Analysis Done")
-                                    final_context.append({
-                                        "model_response": part.text,
-                                    })
                                     f.write(json.dumps(final_context, indent=4))
 
                                     yield f"data: {json.dumps(final_context)}\n\n"
@@ -121,15 +121,7 @@ async def run(prompt: str):
                             else:
                                 print(f"Model output: {part.text}")
                                 context.append(part.text)
-                                final_context.append({
-                                    "model_response": part.text,
-                                })
                                 yield f"data: {part.text}\n\n"
-
-                        # Modified exit condition
-                        # if hasattr(part, "text") and "done" in part.text.lower():
-                        #     print("Received completion signal. Exiting loop.")
-                        #     break
 
                         # Handle missing function calls more gracefully
                         part = response.candidates[0].content.parts[1] if len(response.candidates[0].content.parts) > 1 else part
@@ -153,7 +145,6 @@ async def run(prompt: str):
                         final_context.append({
                             "tool_name": tool_name,
                             "args": args,
-                            "result": str(result)
                         })
 
                     except Exception as e:
